@@ -3,9 +3,13 @@ module.exports = app => {
   const { controller } = app;
   const { user } = controller;
 
+  /**
+   * 用户相关接口
+   */
   apiRouter.post('/user/login', user.login);
+  apiRouter.get('/user/currentUser', user.currentUser);
 
-  const localStrategy = app.passport.authenticate('local', { successRedirect: '/api/loginCallback', failureRedirect: '/api/loginCallback' });
+  const localStrategy = app.passport.authenticate('local', { successRedirect: '/node-api/user/loginCallback', failureRedirect: '/node-api/user/loginCallback' });
   apiRouter.post('/passport/local', localStrategy);
-  apiRouter.get('/loginCallback', user.loginCallback);
+  apiRouter.get('/user/loginCallback', user.loginCallback);
 };

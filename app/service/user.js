@@ -9,6 +9,10 @@ class UserService extends Service {
 
     return user.save();
   }
+
+  async getUserByUsername(username) {
+    return this.ctx.model.User.findOne({ username }).exec();
+  }
 }
 
 module.exports = UserService;

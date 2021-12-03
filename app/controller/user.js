@@ -17,7 +17,19 @@ class UserController extends Controller {
       ctx.body = {
         status: 'ok',
       };
+    } else {
+      ctx.session.returnTo = ctx.path;
+      await ctx.redirect('/user/login');
     }
+  }
+
+  async currentUser() {
+    const { ctx } = this;
+    const user = await ctx.service.user.getUserByUsername(ctx.user.username);
+    ctx.body = {
+      data: user,
+      status: 'ok',
+    };
   }
 }
 
