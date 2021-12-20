@@ -13,6 +13,10 @@ class UserService extends Service {
   async getUserByUsername(username) {
     return this.ctx.model.User.findOne({ username }).exec();
   }
+
+  async getUserListByQuery() {
+    return this.ctx.model.User.find().exec();
+  }
 }
 
 module.exports = UserService;

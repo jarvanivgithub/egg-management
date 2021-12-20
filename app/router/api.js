@@ -8,6 +8,7 @@ module.exports = app => {
    */
   apiRouter.post('/user/login', user.login);
   apiRouter.get('/user/currentUser', user.currentUser);
+  apiRouter.post('/user/userList', user.userList);
 
   const localStrategy = app.passport.authenticate('local', { successRedirect: '/node-api/user/loginCallback', failureRedirect: '/node-api/user/loginCallback' });
   apiRouter.post('/passport/local', localStrategy);

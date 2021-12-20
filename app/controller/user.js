@@ -31,6 +31,15 @@ class UserController extends Controller {
       status: 'ok',
     };
   }
+
+  async userList() {
+    const { ctx } = this;
+    const userList = await ctx.service.user.getUserListByQuery();
+    ctx.body = {
+      data: userList,
+      status: 'ok',
+    };
+  }
 }
 
 module.exports = UserController;
